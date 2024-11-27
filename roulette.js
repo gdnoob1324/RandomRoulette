@@ -4,8 +4,8 @@ const Roulette = (function () {
     const rotationStartEventName = "rotationStart";
 
     const rouletteClass = "roulette";
-    const rouletteListClass = "roulette__list";
-    const roulettePrizeClass = "roulette__prize";
+    const rouletteListClass = "roulette_list";
+    const roulettePrizeClass = "roulette_prize";
 
     const PrizeNotFoundException = "Prize not found";
     const ItemsNotFoundException = "Items not found";

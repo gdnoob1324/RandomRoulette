@@ -69,7 +69,7 @@ window.onload = function () {
             },
             startCallback: function () {
                 console.log("start");
-                document.querySelector('.roulette__list').style.width = roller.width - roller.prizeWidth + 'px';
+                document.querySelector('.roulette_list').style.width = roller.width - roller.prizeWidth + 'px';
             }
         });
         roller.rotateTo(getRandomInt(0, document.querySelectorAll('.roulette > div').length - 1), { time: 2, random: false });
