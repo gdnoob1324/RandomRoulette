@@ -49,6 +49,7 @@ window.onload = function () {
             isSpinning = false;
             return;
         }
+
         Array.from(items).forEach((item) => {
             const duplicatedItem = document.createElement('div');
             duplicatedItem.innerText = item.firstChild.nodeValue.trim();
@@ -68,11 +69,10 @@ window.onload = function () {
             },
             startCallback: function () {
                 console.log("start");
-                document.querySelector('.roulette__list').style.width = '';
                 document.querySelector('.roulette__list').style.width = roller.width - roller.prizeWidth + 'px';
             }
         });
-        roller.rotateTo(getRandomInt(0, document.querySelectorAll('.roulette div').length - 1), { time: 2, random: false });
+        roller.rotateTo(getRandomInt(0, document.querySelectorAll('.roulette > div').length - 1), { time: 2, random: false });
     });
 
 };

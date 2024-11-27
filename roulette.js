@@ -107,8 +107,6 @@ const Roulette = (function () {
                 throw RotationIsAlreadyActiveException;
             if (pixels > 0)
                 rotateForward.bind(this)(pixels);
-            else if (pixels < 0)
-                rotateBackward.bind(this)(pixels);
         }
 
         rotateTo(block, options) {
@@ -119,15 +117,15 @@ const Roulette = (function () {
             if (!prize)
                 throw PrizeNotFoundException;
             this.prize = prize;
-            let { tracks = 0, time = 0, random = true, backward = false } = options || {};
+            let { tracks = 0, time = 0, random = true } = options || {};
             time |= 0;
             tracks |= 0;
             if (this.selectedPrize.index === prize.index && !time && !tracks)
                 return;
             if (time)
-                rotateByTime.bind(this)(prize, time, random, backward);
+                rotateByTime.bind(this)(prize, time, random);
             else
-                rotateByTracks.bind(this)(prize, tracks, random, backward);
+                rotateByTracks.bind(this)(prize, tracks, random);
         }
 
         playClick() {
@@ -236,37 +234,29 @@ const Roulette = (function () {
         rotationTokens.set(this, token);
     }
 
-    function rotateBackward(pixels) {
-        // TODO
-        throw NotImplementedException;
-    }
-
-    function rotateByTracks(prize, tracks, random, backward) {
+    function rotateByTracks(prize, tracks, random) {
         const blockWidth = this.prizeWidth + this.spacing;
         let currentBlock = this.selectedPrize;
         let length = Math.round(tracks) * this.width;
-        if (backward) {
-            // TODO
-            length *= -1;
-        }
-        else {
-            let currentPosition = currentBlock.index * blockWidth + (this.center - currentBlock.wrapper.offsetLeft);
-            let destination = prize.index * blockWidth + this.spacing + this.prizeWidth;
-            if (destination < currentPosition)
-                length += this.width - (currentPosition - destination);
-            else
-                length += destination - currentPosition;
-            if (random)
-                length += Math.random() * this.prizeWidth * .8 - this.prizeWidth * 0.4;
-        }
+
+        let currentPosition = currentBlock.index * blockWidth + (this.center - currentBlock.wrapper.offsetLeft);
+        const computedStyle = window.getComputedStyle(this.container);
+        const paddingLR = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
+        let destination = prize.index * blockWidth + this.spacing + this.prizeWidth / (this.container.scrollWidth - paddingLR <= this.list.clientWidth ? 1 : 2);
+        if (destination < currentPosition)
+            length += this.width - (currentPosition - destination);
+        else
+            length += destination - currentPosition;
+        if (random)
+            length += Math.random() * this.prizeWidth * .8 - this.prizeWidth * 0.4;
         this.rotate(length);
     }
 
-    function rotateByTime(prize, time, random, backward) {
+    function rotateByTime(prize, time, random) {
         let v0 = this.acceleration * time;
         let l = v0 * v0 / (2 * this.acceleration);
         let tracks = Math.ceil(l / this.width);
-        rotateByTracks.bind(this)(prize, tracks, random, backward);
+        rotateByTracks.bind(this)(prize, tracks, random);
     }
 
     return Roulette;
