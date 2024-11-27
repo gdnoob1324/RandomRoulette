@@ -56,6 +56,7 @@ window.onload = function () {
             r.appendChild(duplicatedItem);
         });
 
+        document.querySelector('.roulette').style.width = '';
         roller = new Roulette(".roulette", {
             spacing: 8,
             acceleration: 500,
@@ -65,7 +66,6 @@ window.onload = function () {
             stopCallback: function ({ detail: { prize } }) {
                 console.log(`Selected prize: ${prize.index}, ${prize.element.innerText}`);
                 document.querySelector('h2').innerText = prize.element.innerText + ' 당첨!';
-                document.querySelector('.roulette').style.width = '';
                 isSpinning = false;
             },
             startCallback: function () {
