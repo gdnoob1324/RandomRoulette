@@ -1,0 +1,20 @@
+.footer {
+    padding: 8px;
+    text-align: center;
+    user-select: none;
+    background-color: rgba(0, 0, 0, .5);
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    bottom: 0;
+}
+
+.footer br {
+    display: none;
+}
+
+@media only screen and (max-width: 860px) {
+    .footer br {
+        display: block;
+    }
+}

@@ -1,0 +1,155 @@
+.main {
+    width: 100%;
+    min-height: 100vh;
+    /* background-image: linear-gradient(135deg, #ff0080 0%, #000080 100%); */
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main > div {
+    width: 80%;
+    border: solid 4px #ffffff80;
+    border-radius: 12px;
+    padding: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.main button {
+    background: local;
+    color: white;
+    border: none;
+    font-size: 3rem;
+    font-weight: 900;
+    margin: 12px 0;
+}
+
+.main button, .main h2 {
+    cursor: pointer;
+}
+
+.main input {
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    padding: 6px 10px;
+    background-color: #ffffffc0;
+    font-weight: 600;
+}
+
+.main input:focus {
+    outline: solid 4px #ffffff80;
+}
+
+.main input::placeholder {
+    color: black;
+    opacity: .6;
+    font-weight: 400;
+}
+
+.main #items:has(span) {
+    position: relative;
+    border: dashed 4px #ffffff80;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.main #items span {
+    position: relative;
+    background-color: #00000080;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 2rem;
+}
+
+.main #items:has(span) div {
+    position: absolute;
+    background-color: red;
+    font-size: .5rem;
+    text-align: center;
+    color: white;
+    width: 12px;
+    height: 12px;
+    top: -4px;
+    right: -4px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1.4;
+    font-weight: 900;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main #items:not(:has(span)) > div, .main .roulette:not(:has(div)) { display: none; }
+.main #items:has(span) > div {
+    background-color: red;
+    font-size: .6rem;
+    width: 16px;
+    height: 16px;
+    top: -8px;
+    right: -8px;
+}
+
+
+.roulette {
+    position: relative;
+    border: solid 4px #ffffff80;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 24px;
+    max-width: 100%;
+    overflow: hidden;
+    /* width: 256px; */
+}
+
+.roulette__list {
+    display: flex;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+
+    position: relative;
+    mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent);
+}
+
+.roulette::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 24px;
+    top: 0px;
+    left: calc(50% - 2px);
+    background-color: #ffffff80;
+}
+
+.roulette__prize {
+    flex: 0 0 auto;
+}
+
+.roulette__prize div, .roulette > div {
+    background-color: #00000080;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+}
