@@ -39,7 +39,7 @@ window.onload = function () {
         if (isSpinning) return;
         isSpinning = true;
 
-        document.querySelector('h2').innerText = ''
+        document.querySelector('h2').innerText = '추첨 중..'
         const r = document.querySelector('.roulette');
         r.innerHTML = '';
         let items = document.querySelectorAll('#items span');
