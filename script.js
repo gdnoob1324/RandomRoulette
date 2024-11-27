@@ -74,7 +74,7 @@ window.onload = function () {
                 document.querySelector('.roulette').style.width = roller.width - roller.prizeWidth + 24 + 'px';
             }
         });
-        roller.rotateTo(getRandomInt(0, document.querySelectorAll('.roulette > div').length - 1), { time: 2, random: false });
+        roller.rotateTo(getRandomInt(0, document.querySelectorAll('.roulette div').length - 1), { time: 2, random: false });
     });
 
 };

@@ -241,8 +241,7 @@ const Roulette = (function () {
 
         let currentPosition = currentBlock.index * blockWidth + (this.center - currentBlock.wrapper.offsetLeft);
         const computedStyle = window.getComputedStyle(this.container);
-        const paddingLR = parseFloat(computedStyle.paddingLeft) + parseFloat(computedStyle.paddingRight);
-        let destination = prize.index * blockWidth + this.spacing + this.prizeWidth / (this.container.scrollWidth - paddingLR <= this.list.clientWidth ? 1 : 2);
+        let destination = prize.index * blockWidth + this.spacing + this.prizeWidth / (this.container.scrollWidth - spacing * 2 <= this.list.clientWidth ? 1 : 2);
         if (destination < currentPosition)
             length += this.width - (currentPosition - destination);
         else
