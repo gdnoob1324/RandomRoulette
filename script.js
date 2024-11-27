@@ -66,10 +66,12 @@ window.onload = function () {
                 console.log(`Selected prize: ${prize.index}, ${prize.element.innerText}`);
                 document.querySelector('h2').innerText = prize.element.innerText + ' 당첨!';
                 isSpinning = false;
+                document.querySelector('.roulette').style.width = '';
             },
             startCallback: function () {
                 console.log("start");
-                document.querySelector('.roulette_list').style.width = roller.width - roller.prizeWidth + 'px';
+                // document.querySelector('.roulette_list').style.width = roller.width - roller.prizeWidth + 'px';
+                document.querySelector('.roulette').style.width = roller.width - roller.prizeWidth + 24 + 'px';
             }
         });
         roller.rotateTo(getRandomInt(0, document.querySelectorAll('.roulette > div').length - 1), { time: 2, random: false });
