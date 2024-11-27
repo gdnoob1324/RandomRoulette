@@ -45,7 +45,7 @@
 }
 
 .main input:focus {
-    outline: solid 4px #ffffff80;
+    outline: solid 4px white;
 }
 
 .main input::placeholder {
