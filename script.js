@@ -24,6 +24,16 @@ function keyevent(e) {
 let roller;
 window.onload = function () {
 
+    window.onblur = function() {
+        document.documentElement.style.setProperty('--selection-color', '#a8a8a8a0');
+      }
+      
+      window.onfocus = function() {
+        document.documentElement.style.setProperty('--selection-color', '#0044CEc0');
+      }
+      
+      document.documentElement.style.setProperty('--selection-color', '#0044CEc0');
+
     document.querySelector('h2').onclick = function (e) {
         e.target.innerText = '';
     };
